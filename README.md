@@ -14,21 +14,14 @@ sudo bash cleanup_odoo18.sh nuke
 sudo bash cleanup_odoo18.sh purge-nginx
 	
 Rekomendasi:
-		○ Jalankan safe dulu. Kalau mau benar-benar mulai dari nol, pastikan sudah backup (./backup.sh <dbname>) lalu jalankan nuke.
-Yang dibersihkan oleh skrip
-	• Systemd unit odoo18-multi.service (stop + disable + remove).
-	• Containers: odoo18_postgres, odoo18_sand1/2/3, odoo18_nginx.
-	• Network: odoo_network.
-	• Volumes (hanya mode nuke): odoo18_postgres_data, odoo18_sand1/2/3_filestore.
-	• Image (mode nuke): odoo18-custom:latest.
-	• Folder (mode nuke): ~/odoo18.
-	• UFW: hapus rules 80/443/8069–8071 (abaikan error jika rule tidak ada).
-	• Nginx host (opsional purge-nginx): apt purge nginx* + hapus /etc/nginx.
+	- Jalankan safe dulu. Kalau mau benar-benar mulai dari nol, pastikan sudah backup (./backup.sh <dbname>) lalu jalankan nuke.
 
-Alur “bersih → pasang ulang” yang aman
-	1. (Opsional) Backup database lama:
-cd ~/odoo18
-./backup.sh nama_database
-	
- 2. Bersihkan:
-sudo bash cleanup_odoo18.sh safe   # atau nuke jika ingin kosong total
+Yang dibersihkan oleh skrip
+	- Systemd unit odoo18-multi.service (stop + disable + remove).
+	- Containers: odoo18_postgres, odoo18_sand1/2/3, odoo18_nginx.
+	- Network: odoo_network.
+	- Volumes (hanya mode nuke): odoo18_postgres_data, odoo18_sand1/2/3_filestore.
+	- Image (mode nuke): odoo18-custom:latest.
+	- Folder (mode nuke): ~/odoo18.
+	- UFW: hapus rules 80/443/8069–8071 (abaikan error jika rule tidak ada).
+	- Nginx host (opsional purge-nginx): apt purge nginx* + hapus /etc/nginx
